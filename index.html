@@ -636,13 +636,14 @@ body.is-ready .hero-eyebrow::after {
 }
 
 .brand-name {
+  display: block;
   font-family: var(--hw-display);
-  font-size: 1.4rem;
+  font-size: clamp(0.92rem, 1.1vw + 0.7rem, 1.4rem);
   font-weight: 700;
   letter-spacing: 0.01em;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  line-height: 1.12;
+  white-space: normal;
+  overflow-wrap: break-word;
   transition: font-size 0.6s var(--ease-out);
 }
 
@@ -1393,6 +1394,19 @@ main section[id] {
 
 .service-row--reverse .service-media {
   order: 2;
+}
+
+.service-row--text-only {
+  grid-template-columns: 1fr;
+}
+
+.service-row--text-only .service-body {
+  max-width: 68ch;
+}
+
+.service-row--text-only .service-list {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-width: 62ch;
 }
 
 .service-media {
@@ -2686,10 +2700,6 @@ main section[id] {
     padding: 12px 0;
   }
 
-  .brand-name {
-    font-size: 1.18rem;
-  }
-
   .brand-tagline {
     font-size: 0.52rem;
     letter-spacing: 0.2em;
@@ -3183,8 +3193,7 @@ main section[id] {
         <ul>
           <li><a href="#inicio" class="nav-link"><span class="nav-link-index">01</span><span class="nav-link-text">Inicio</span></a></li>
           <li><a href="#servicios" class="nav-link"><span class="nav-link-index">02</span><span class="nav-link-text">Comodidades</span></a></li>
-          <li><a href="#galeria" class="nav-link"><span class="nav-link-index">03</span><span class="nav-link-text">Galeria</span></a></li>
-          <li><a href="#contacto" class="nav-link"><span class="nav-link-index">04</span><span class="nav-link-text">Contacto</span></a></li>
+          <li><a href="#contacto" class="nav-link"><span class="nav-link-index">03</span><span class="nav-link-text">Contacto</span></a></li>
         </ul>
         <button type="button" class="btn btn-primary btn-nav" data-wa-trigger><span>Reserva por WhatsApp</span></button>
       </nav>
@@ -3233,19 +3242,6 @@ main section[id] {
             <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm0 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16Zm.9-13H11v6l5.2 3.1.9-1.5-4.2-2.5Z"/></svg>
             <span>Lunes a sabado, 9:00 a 19:00</span>
           </div>
-          <div class="hero-meta-item hero-meta-item--social">
-            <span class="hero-social-label">Siguenos aqui</span>
-            <div class="social-links">
-              <a href="https://wa.me/16196533991" target="_blank" rel="noopener" class="social-link" aria-label="Instagram">
-                <span class="social-link-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2c2.7 0 3.1 0 4.1.06 1.1.05 1.8.22 2.5.47.7.27 1.2.6 1.8 1.15.5.5.9 1.1 1.1 1.8.25.7.42 1.4.47 2.5.06 1 .06 1.4.06 4.1s0 3.1-.06 4.1c-.05 1.1-.22 1.8-.47 2.5-.27.7-.6 1.2-1.15 1.8a4.9 4.9 0 0 1-1.8 1.1c-.7.25-1.4.42-2.5.47-1 .06-1.4.06-4.1.06s-3.1 0-4.1-.06c-1.1-.05-1.8-.22-2.5-.47a4.9 4.9 0 0 1-1.8-1.15 4.9 4.9 0 0 1-1.1-1.8c-.25-.7-.42-1.4-.47-2.5C2 15.1 2 14.7 2 12s0-3.1.06-4.1c.05-1.1.22-1.8.47-2.5.27-.7.6-1.2 1.15-1.8.5-.5 1.1-.9 1.8-1.1.7-.25 1.4-.42 2.5-.47C8.9 2 9.3 2 12 2Zm0 2c-2.65 0-2.98 0-4.03.06-.86.04-1.33.18-1.64.3-.42.16-.72.35-1.03.66-.31.31-.5.61-.66 1.03-.12.31-.26.78-.3 1.64C4.28 9.02 4.28 9.35 4.28 12s0 2.98.06 4.03c.04.86.18 1.33.3 1.64.16.42.35.72.66 1.03.31.31.61.5 1.03.66.31.12.78.26 1.64.3 1.05.06 1.38.06 4.03.06s2.98 0 4.03-.06c.86-.04 1.33-.18 1.64-.3.42-.16.72-.35 1.03-.66.31-.31.5-.61.66-1.03.12-.31.26-.78.3-1.64.06-1.05.06-1.38.06-4.03s0-2.98-.06-4.03c-.04-.86-.18-1.33-.3-1.64a2.8 2.8 0 0 0-.66-1.03 2.8 2.8 0 0 0-1.03-.66c-.31-.12-.78-.26-1.64-.3C14.98 4 14.65 4 12 4Zm0 3.3A4.7 4.7 0 1 1 7.3 12 4.7 4.7 0 0 1 12 7.3Zm0 2A2.7 2.7 0 1 0 14.7 12 2.7 2.7 0 0 0 12 9.3Zm5.2-2.9a1.1 1.1 0 1 1-1.1-1.1 1.1 1.1 0 0 1 1.1 1.1Z"/></svg></span>
-                <span class="social-link-name">Instagram</span>
-              </a>
-              <a href="https://wa.me/16196533991" target="_blank" rel="noopener" class="social-link" aria-label="Facebook">
-                <span class="social-link-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg></span>
-                <span class="social-link-name">Facebook</span>
-              </a>
-            </div>
-          </div>
         </div>
       </div>
       <a href="#servicios" class="scroll-indicator" aria-label="Desplazate hacia abajo"><span class="scroll-line"></span></a>
@@ -3281,10 +3277,7 @@ main section[id] {
             </div>
           </article>
 
-          <article class="service-row service-row--reverse">
-            <div class="service-media" data-reveal="media">
-              <img src="img/3.jpg" alt="Equipado para los mas chiquitos de la familia" loading="lazy">
-            </div>
+          <article class="service-row service-row--text-only">
             <div class="service-body" data-reveal-group>
               <div class="service-body-head" data-reveal>
                 <span class="service-index" aria-hidden="true">02</span>
@@ -3304,7 +3297,7 @@ main section[id] {
 
           <article class="service-row">
             <div class="service-media" data-reveal="media">
-              <img src="img/4.jpg" alt="Alberca, jacuzzi y todo cerca de tu puerta" loading="lazy">
+              <img src="img/3.jpg" alt="Alberca, jacuzzi y todo cerca de tu puerta" loading="lazy">
             </div>
             <div class="service-body" data-reveal-group>
               <div class="service-body-head" data-reveal>
@@ -3405,21 +3398,6 @@ main section[id] {
         </div>
       </div>
     </section>
-<section class="brochures">
-      <div class="container">
-        <div class="section-head">
-          <div class="section-head-main">
-            <p class="eyebrow" data-reveal>Lo que te llevas</p>
-            <h2 class="section-title" data-reveal>Vacaciones sin contratiempos ni gastos de mas</h2>
-          </div>
-          <p class="section-desc" data-reveal>Tu familia llega a un espacio limpio, ordenado y listo para usarse. No tienes que buscar donde comer, donde comprar ni que hacer con el bebe. Te vas sintiendote descansado de verdad, no solo de lugar.</p>
-        </div>
-        <div class="brochures-grid" data-reveal-group>
-          <figure class="brochure-item" data-reveal="media"><img src="img/6.jpg" alt="Vacaciones sin contratiempos ni gastos de mas" loading="lazy"></figure>
-          <figure class="brochure-item" data-reveal="media"><img src="img/7.jpg" alt="Lo que te llevas" loading="lazy"></figure>
-        </div>
-      </div>
-    </section>
 <section class="parallax-banner parallax-banner--alt" data-parallax>
       <div class="parallax-bg" style="background-image:url('img/8.jpg');" aria-hidden="true"></div>
       <div class="parallax-overlay" aria-hidden="true"></div>
@@ -3428,69 +3406,7 @@ main section[id] {
         <h2 data-reveal>Preparamos cada detalle para que no te falte nada desde el primer momento.</h2>
       </div>
     </section>
-<section class="gallery" id="galeria">
-      <div class="container">
-        <div class="section-head">
-          <div class="section-head-main">
-            <p class="eyebrow" data-reveal>El lugar en imagenes</p>
-            <h2 class="section-title" data-reveal>Mira como es <span class="text-gold">tu hogar en San Diego</span></h2>
-          </div>
-          <p class="section-desc" data-reveal>Cada rincon del departamento esta pensado para que tu familia se sienta comoda desde el primer dia. Espacios limpios, bien equipados y con todo lo que necesitas al alcance.</p>
-        </div>
-        <div class="gallery-grid" data-reveal-group>
-          <figure class="gallery-item" data-reveal="media">
-            <img src="img/11.jpg" alt="Sala con sofa cama Queen y television de pantalla grande" loading="lazy">
-            <button type="button" class="gallery-trigger" data-lightbox-open data-lightbox-index="0" aria-label="Ampliar imagen: Sala con sofa cama Queen y television de pantalla grande">
-              <svg class="gallery-trigger-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" d="M4 9V5a1 1 0 0 1 1-1h4M15 4h4a1 1 0 0 1 1 1v4M20 15v4a1 1 0 0 1-1 1h-4M9 20H5a1 1 0 0 1-1-1v-4"/></svg>
-            </button>
-          </figure>
-          <figure class="gallery-item" data-reveal="media">
-            <img src="img/12.jpg" alt="Cocina equipada con estufa, refrigerador y utensilios" loading="lazy">
-            <button type="button" class="gallery-trigger" data-lightbox-open data-lightbox-index="1" aria-label="Ampliar imagen: Cocina equipada con estufa, refrigerador y utensilios">
-              <svg class="gallery-trigger-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" d="M4 9V5a1 1 0 0 1 1-1h4M15 4h4a1 1 0 0 1 1 1v4M20 15v4a1 1 0 0 1-1 1h-4M9 20H5a1 1 0 0 1-1-1v-4"/></svg>
-            </button>
-          </figure>
-          <figure class="gallery-item" data-reveal="media">
-            <img src="img/13.jpg" alt="Dormitorio con cama Queen y closet" loading="lazy">
-            <button type="button" class="gallery-trigger" data-lightbox-open data-lightbox-index="2" aria-label="Ampliar imagen: Dormitorio con cama Queen y closet">
-              <svg class="gallery-trigger-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" d="M4 9V5a1 1 0 0 1 1-1h4M15 4h4a1 1 0 0 1 1 1v4M20 15v4a1 1 0 0 1-1 1h-4M9 20H5a1 1 0 0 1-1-1v-4"/></svg>
-            </button>
-          </figure>
-          <figure class="gallery-item" data-reveal="media">
-            <img src="img/14.jpg" alt="Bano completo con tina y amenidades incluidas" loading="lazy">
-            <button type="button" class="gallery-trigger" data-lightbox-open data-lightbox-index="3" aria-label="Ampliar imagen: Bano completo con tina y amenidades incluidas">
-              <svg class="gallery-trigger-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" d="M4 9V5a1 1 0 0 1 1-1h4M15 4h4a1 1 0 0 1 1 1v4M20 15v4a1 1 0 0 1-1 1h-4M9 20H5a1 1 0 0 1-1-1v-4"/></svg>
-            </button>
-          </figure>
-          <figure class="gallery-item" data-reveal="media">
-            <img src="img/15.jpg" alt="Patio privado cercado con parrilla y asientos exteriores" loading="lazy">
-            <button type="button" class="gallery-trigger" data-lightbox-open data-lightbox-index="4" aria-label="Ampliar imagen: Patio privado cercado con parrilla y asientos exteriores">
-              <svg class="gallery-trigger-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" d="M4 9V5a1 1 0 0 1 1-1h4M15 4h4a1 1 0 0 1 1 1v4M20 15v4a1 1 0 0 1-1 1h-4M9 20H5a1 1 0 0 1-1-1v-4"/></svg>
-            </button>
-          </figure>
-          <figure class="gallery-item" data-reveal="media">
-            <img src="img/16.jpg" alt="Alberca y jacuzzi compartidos del condominio" loading="lazy">
-            <button type="button" class="gallery-trigger" data-lightbox-open data-lightbox-index="5" aria-label="Ampliar imagen: Alberca y jacuzzi compartidos del condominio">
-              <svg class="gallery-trigger-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" d="M4 9V5a1 1 0 0 1 1-1h4M15 4h4a1 1 0 0 1 1 1v4M20 15v4a1 1 0 0 1-1 1h-4M9 20H5a1 1 0 0 1-1-1v-4"/></svg>
-            </button>
-          </figure>
-        </div>
-
-        <div class="gallery-cta" data-reveal>
-          <div class="gallery-cta-text">
-            <svg viewBox="0 0 24 24" class="gallery-cta-icon" aria-hidden="true"><path fill="currentColor" d="M4 5h16v2H4V5Zm0 6h16v2H4v-2Zm0 6h10v2H4v-2Z"/></svg>
-            <p>Reserva tu estancia en Paradise Hills y disfruta San Diego con toda la comodidad de un hogar. Pregunta por descuentos en estancias largas.</p>
-          </div>
-          <button type="button" class="btn btn-outline" data-wa-trigger>
-            <span>Consulta disponibilidad</span>
-            <svg viewBox="0 0 24 24" class="btn-icon btn-icon--arrow" aria-hidden="true"><path fill="currentColor" d="M12 16.5 5 9.5 6.4 8.1l5.6 5.6 5.6-5.6L19 9.5Z"/></svg>
-          </button>
-        </div>
-      </div>
-    </section>
-<section class="contact has-bg" id="contacto">
-      <div class="section-bg" style="background-image:url('img/10.jpg');" aria-hidden="true"></div>
-      <div class="section-bg-veil" aria-hidden="true"></div>
+<section class="contact" id="contacto">
       <div class="container contact-grid">
         <div class="contact-info">
           <p class="eyebrow" data-reveal>Reserva tu estancia</p>
@@ -3515,14 +3431,6 @@ main section[id] {
           </ul>
           <div class="contact-actions" data-reveal>
             <button type="button" class="btn btn-primary" data-wa-trigger><span>Reserva por WhatsApp</span></button>
-            <div class="social-links social-links--inline">
-              <a href="https://wa.me/16196533991" target="_blank" rel="noopener" class="social-link" aria-label="Instagram">
-                <span class="social-link-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2c2.7 0 3.1 0 4.1.06 1.1.05 1.8.22 2.5.47.7.27 1.2.6 1.8 1.15.5.5.9 1.1 1.1 1.8.25.7.42 1.4.47 2.5.06 1 .06 1.4.06 4.1s0 3.1-.06 4.1c-.05 1.1-.22 1.8-.47 2.5-.27.7-.6 1.2-1.15 1.8a4.9 4.9 0 0 1-1.8 1.1c-.7.25-1.4.42-2.5.47-1 .06-1.4.06-4.1.06s-3.1 0-4.1-.06c-1.1-.05-1.8-.22-2.5-.47a4.9 4.9 0 0 1-1.8-1.15 4.9 4.9 0 0 1-1.1-1.8c-.25-.7-.42-1.4-.47-2.5C2 15.1 2 14.7 2 12s0-3.1.06-4.1c.05-1.1.22-1.8.47-2.5.27-.7.6-1.2 1.15-1.8.5-.5 1.1-.9 1.8-1.1.7-.25 1.4-.42 2.5-.47C8.9 2 9.3 2 12 2Zm0 2c-2.65 0-2.98 0-4.03.06-.86.04-1.33.18-1.64.3-.42.16-.72.35-1.03.66-.31.31-.5.61-.66 1.03-.12.31-.26.78-.3 1.64C4.28 9.02 4.28 9.35 4.28 12s0 2.98.06 4.03c.04.86.18 1.33.3 1.64.16.42.35.72.66 1.03.31.31.61.5 1.03.66.31.12.78.26 1.64.3 1.05.06 1.38.06 4.03.06s2.98 0 4.03-.06c.86-.04 1.33-.18 1.64-.3.42-.16.72-.35 1.03-.66.31-.31.5-.61.66-1.03.12-.31.26-.78.3-1.64.06-1.05.06-1.38.06-4.03s0-2.98-.06-4.03c-.04-.86-.18-1.33-.3-1.64a2.8 2.8 0 0 0-.66-1.03 2.8 2.8 0 0 0-1.03-.66c-.31-.12-.78-.26-1.64-.3C14.98 4 14.65 4 12 4Zm0 3.3A4.7 4.7 0 1 1 7.3 12 4.7 4.7 0 0 1 12 7.3Zm0 2A2.7 2.7 0 1 0 14.7 12 2.7 2.7 0 0 0 12 9.3Zm5.2-2.9a1.1 1.1 0 1 1-1.1-1.1 1.1 1.1 0 0 1 1.1 1.1Z"/></svg></span>
-              </a>
-              <a href="https://wa.me/16196533991" target="_blank" rel="noopener" class="social-link" aria-label="Facebook">
-                <span class="social-link-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg></span>
-              </a>
-            </div>
           </div>
         </div>
         <div class="contact-map" data-reveal="media">
@@ -3548,7 +3456,6 @@ main section[id] {
         <ul>
           <li><a href="#inicio">Inicio</a></li>
           <li><a href="#servicios">Comodidades</a></li>
-          <li><a href="#galeria">Galeria</a></li>
           <li><a href="#contacto">Contacto</a></li>
         </ul>
       </div>
@@ -3601,29 +3508,6 @@ main section[id] {
     </div>
   </div>
 
-  <div class="lightbox" id="lightbox" aria-hidden="true">
-    <button type="button" class="lightbox-overlay" data-lightbox-close aria-label="Cerrar"></button>
-    <div class="lightbox-panel" role="dialog" aria-modal="true" aria-label="Galeria ampliada">
-      <button type="button" class="lightbox-close" data-lightbox-close aria-label="Cerrar">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.4 5 5 6.4 10.6 12 5 17.6 6.4 19 12 13.4 17.6 19 19 17.6 13.4 12 19 6.4 17.6 5 12 10.6Z"/></svg>
-      </button>
-      <div class="lightbox-stage">
-        <button type="button" class="lightbox-nav lightbox-nav--prev" data-lightbox-prev aria-label="Imagen anterior">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M14.7 5.3 8 12l6.7 6.7 1.4-1.4L10.8 12l5.3-5.3Z"/></svg>
-        </button>
-        <div class="lightbox-frame">
-          <img src="" alt="" class="lightbox-image" id="lightbox-image">
-        </div>
-        <button type="button" class="lightbox-nav lightbox-nav--next" data-lightbox-next aria-label="Imagen siguiente">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="m9.3 5.3-1.4 1.4L13.2 12l-5.3 5.3 1.4 1.4L16 12Z"/></svg>
-        </button>
-      </div>
-      <div class="lightbox-meta">
-        <span class="lightbox-caption" id="lightbox-caption"></span>
-        <span class="lightbox-count"><span id="lightbox-current">1</span> / <span id="lightbox-total">6</span></span>
-      </div>
-    </div>
-  </div>
 
   
 <script>
@@ -3794,90 +3678,6 @@ document.addEventListener("keydown", (event) => {
   if (event.key !== "Escape") return;
   if (waModal?.classList.contains("is-open")) closeWaModal();
   if (body.classList.contains("nav-open")) closeNav();
-});
-
-/* =========================================================
-   LIGHTBOX DE GALERIA (carrusel a pantalla completa)
-   ========================================================= */
-const lightbox = document.getElementById("lightbox");
-const lightboxImage = document.getElementById("lightbox-image");
-const lightboxCaption = document.getElementById("lightbox-caption");
-const lightboxCurrent = document.getElementById("lightbox-current");
-const lightboxTotal = document.getElementById("lightbox-total");
-const lightboxCloseEls = document.querySelectorAll("[data-lightbox-close]");
-const lightboxPrevBtn = document.querySelector("[data-lightbox-prev]");
-const lightboxNextBtn = document.querySelector("[data-lightbox-next]");
-const lightboxTriggers = [...document.querySelectorAll("[data-lightbox-open]")];
-
-const lightboxSlides = [...document.querySelectorAll(".gallery-item img")].map((img) => ({
-  src: img.currentSrc || img.src,
-  alt: img.alt || ""
-}));
-
-let lightboxIndex = 0;
-let lightboxLastFocused = null;
-
-const renderLightboxSlide = () => {
-  if (!lightbox || !lightboxImage || !lightboxSlides.length) return;
-  const slide = lightboxSlides[lightboxIndex];
-  lightboxImage.classList.remove("is-loaded");
-
-  const applySlide = () => {
-    lightboxImage.src = slide.src;
-    lightboxImage.alt = slide.alt;
-    requestAnimationFrame(() => lightboxImage.classList.add("is-loaded"));
-  };
-
-  const preload = new Image();
-  preload.onload = applySlide;
-  preload.onerror = applySlide;
-  preload.src = slide.src;
-
-  if (lightboxCaption) lightboxCaption.textContent = slide.alt;
-  if (lightboxCurrent) lightboxCurrent.textContent = String(lightboxIndex + 1);
-  if (lightboxTotal) lightboxTotal.textContent = String(lightboxSlides.length);
-};
-
-const openLightbox = (index) => {
-  if (!lightbox || !lightboxSlides.length) return;
-  lightboxIndex = ((index % lightboxSlides.length) + lightboxSlides.length) % lightboxSlides.length;
-  lightboxLastFocused = document.activeElement;
-  renderLightboxSlide();
-  lightbox.classList.add("is-open");
-  lightbox.setAttribute("aria-hidden", "false");
-  body.classList.add("lightbox-open");
-  lightbox.querySelector(".lightbox-close")?.focus();
-};
-
-const closeLightbox = () => {
-  if (!lightbox) return;
-  lightbox.classList.remove("is-open");
-  lightbox.setAttribute("aria-hidden", "true");
-  body.classList.remove("lightbox-open");
-  if (lightboxLastFocused instanceof HTMLElement) lightboxLastFocused.focus();
-};
-
-const stepLightbox = (delta) => {
-  if (!lightboxSlides.length) return;
-  lightboxIndex = ((lightboxIndex + delta) % lightboxSlides.length + lightboxSlides.length) % lightboxSlides.length;
-  renderLightboxSlide();
-};
-
-lightboxTriggers.forEach((trigger) => {
-  trigger.addEventListener("click", () => {
-    openLightbox(Number(trigger.dataset.lightboxIndex || 0));
-  });
-});
-
-lightboxCloseEls.forEach((el) => el.addEventListener("click", closeLightbox));
-lightboxPrevBtn?.addEventListener("click", () => stepLightbox(-1));
-lightboxNextBtn?.addEventListener("click", () => stepLightbox(1));
-
-document.addEventListener("keydown", (event) => {
-  if (!lightbox?.classList.contains("is-open")) return;
-  if (event.key === "Escape") closeLightbox();
-  if (event.key === "ArrowLeft") stepLightbox(-1);
-  if (event.key === "ArrowRight") stepLightbox(1);
 });
 
 /* =========================================================
